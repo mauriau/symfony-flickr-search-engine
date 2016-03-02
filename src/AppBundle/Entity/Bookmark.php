@@ -39,8 +39,8 @@ class Bookmark
     protected $isActive;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="bookmarks")
-     * @ORM\JoinColumn(name="user_id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="bookmarks",cascade={"remove"})
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     protected $User;
 
@@ -106,6 +106,7 @@ class Bookmark
     {
         return $this->isActive;
     }
+
     /**
      * Constructor
      */
@@ -163,7 +164,7 @@ class Bookmark
     /**
      * Get User
      *
-     * @return \UserBundle\Entity\User 
+     * @return \UserBundle\Entity\User
      */
     public function getUser()
     {
