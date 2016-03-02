@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Picture;
+use UserBundle\Entity\User;
 
 /**
  * Bookmark
@@ -152,7 +153,7 @@ class Bookmark
      * @param \UserBundle\Entity\User $user
      * @return Bookmark
      */
-    public function setUser(\UserBundle\Entity\User $user)
+    public function setUser(User $user)
     {
         $this->User = $user;
 
