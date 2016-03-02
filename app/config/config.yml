@@ -70,3 +70,9 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: UserBundle\Entity\User
+
+easy_admin:
+    entities:
+        - AppBundle\Entity\Bookmark
+        - AppBundle\Entity\Picture
+        - UserBundle\Entity\User
