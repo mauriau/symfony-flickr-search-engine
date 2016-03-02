@@ -1,4 +1,6 @@
 /web/bundles/
+/bower_components
+bower.json
 /app/bootstrap.php.cache
 /app/cache/*
 /app/config/parameters.yml
