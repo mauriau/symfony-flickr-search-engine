@@ -1,0 +1,16 @@
+{
+  "name": "bower",
+  "version": "0.0.0",
+  "authors": [
+    "Barry Aelpeacha <aelpeacha.barry@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

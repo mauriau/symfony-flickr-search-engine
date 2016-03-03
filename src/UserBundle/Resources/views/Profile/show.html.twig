@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block navtop %}
+    {% include "AppBundle:Nav:navtop.html.twig" %}
+{% endblock %}
+
+{% block titlepage %}
+    {% include "UserBundle:Title:title.html.twig" %}
+{% endblock %}
+
+{% block container %}
+{% include "UserBundle:Profile:show_content.html.twig" %}
+{% endblock %}
