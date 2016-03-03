@@ -1,21 +1,21 @@
 $(document).ready(function () {
     var sfield = $("#s");
-    var container = $("#searchByTag");
+    var container = $("#FlickrSearch");
     var timer;
 
-    function instaSearch() {
+    function FlickrSearch() {
         $(sfield).addClass("loading");
         $(container).empty();
         var q = $(sfield).val();
 
         $.ajax({
             type: 'GET',
-            url: 'search/' + q,
+            url: '/flickr/search/' + q,
             dataType: 'json',
             success: function (data) {
                 $(sfield).removeClass("loading");
                 $.each(data.photos.photo, function (i, item) {
-                    var ncode = '<div class="p"> <img class="activator" src="https://farm' + item.farm + '.staticflickr.com/' + item.server + '/' + item.id + '_' + item.secret + '.jpg"></div>';
+                    var ncode = '<img class="activator" height="300" src="https://farm' + item.farm + '.staticflickr.com/' + item.server + '/' + item.id + '_' + item.secret + '.jpg"/>';
                     $(container).append(ncode);
                 });
             },
@@ -45,7 +45,7 @@ $(document).ready(function () {
             clearTimeout(timer);
 
             timer = setTimeout(function () {
-                instaSearch();
+                FlickrSearch();
             }, 900);
         }
     });
