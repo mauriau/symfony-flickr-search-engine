@@ -12,3 +12,5 @@ bower.json
 /vendor/
 /bin/
 /composer.phar
+.idea/*
+/nbproject/

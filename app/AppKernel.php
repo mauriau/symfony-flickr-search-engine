@@ -18,7 +18,8 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new UserBundle\UserBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
-            new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
+            new \JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
+            new FlickrBundle\FlickrBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
@@ -26,6 +27,8 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+
         }
 
         return $bundles;

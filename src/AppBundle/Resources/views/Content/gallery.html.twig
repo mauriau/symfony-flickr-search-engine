@@ -1,15 +1,14 @@
 <div class="row">
+    {{ dump(images) }}
+    {% for image in images.photos.photo %}
 
     <div class="col l3 m6 s12">
-        <div class="card">
 
         <div id="cardPicture" class="card">
             <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="https://farm{{ image.farm }}.staticflickr.com/{{ image.server }}/{{ image.id }}_{{ image.secret }}.jpg">
             </div>
             <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">{{ image.title }}<i class="material-icons right">more_vert</i></span>
-
                 <span class="card-title activator grey-text text-darken-4">{{ image.title }}
                 </span>
 
@@ -17,18 +16,17 @@
                 <a class="modal-trigger" href="#modal1">
                     <i class="material-icons right" alt="Favoris" style="color:#ffd740">star_rate</i>
                 </a>
-
-
                 <p><a href="#">This is a link</a></p>
+
             </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">{{ image.title }}<i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+
+            <div  class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                information
             </div>
         </div>
     </div>
     {% endfor %}
-
 
     {# modal #}
     <div id="modal1" class="modal bottom-sheet">
@@ -74,4 +72,3 @@
 
         </div>
 </div>
-
