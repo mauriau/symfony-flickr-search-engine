@@ -5,7 +5,8 @@
     </section>
     <section id="photos">
         {% for res in results.photos.photo%}
-            <img src="http://farm{{res.farm}}static.flickr.com/{{res.server}}/{{res.id}}_{{res.secret}}.jpg">
+{#            <img src="http://farm{{res.farm}}static.flickr.com/{{res.server}}/{{res.id}}_{{res.secret}}.jpg">#}
+<a href="https://www.flickr.com/photos/{{res.owner}}/{{res.id}}" target="_blank"><img src="http://farm{{res.farm}}.static.flickr.com/{{res.server}}/{{res.id}}_{{res.secret}}_t.jpg"></a>
         {%endfor%}
     </section>
 </div>
