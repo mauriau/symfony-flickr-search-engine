@@ -12,6 +12,12 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('UserBundle:Default:index.html.twig');
+        if($this->getUser()){
+            $url = $this->get('router')->generate('gallery');
+        } else {
+            $url = $this->get('router')->generate('fos_user_security_login');
+        }
+
+        return $this->redirect($url);
     }
 }

@@ -18,10 +18,10 @@ security:
                 csrf_token_generator: security.csrf.token_manager
                 # if you are using Symfony < 2.8, use the following config instead:
                 # csrf_provider: form.csrf_provider
-                default_target_path:            /
+                default_target_path:            /gallery
 
             logout:
-                target:   /login
+                target:   /
             anonymous:    true
 
     access_control:

@@ -10,21 +10,22 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/gallery", name="gallery")
+     * @Template("AppBundle:Default:index.html.twig")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
+        $flickService = $this->get('flickr.search');
+        $result = $flickService->search();
+
+        return ['images'=> $result];
     }
 
     /**
      * @Route("/mywall", name="mywall")
      * @Template("AppBundle:Content:galleryperso.html.twig")
      */
-    public function murpersoAction(Request $request)
+    public function myWallAction()
     {
 
     }

@@ -11,26 +11,23 @@ class LoadBookmarkFixture extends AbstractFixture implements OrderedFixtureInter
 {
     function load(ObjectManager $manager)
     {
-        $picture = new Picture();
+        $johnbookmark = new Bookmark();
+        $johnbookmark->setTitle('BITCHES');
+        $johnbookmark->setUser($this->getReference('admin-user'));
+        $johnbookmark->setIsActive(1);
+        $johnbookmark->addPicture($this->getReference('picture-1'));
+        $johnbookmark->addPicture($this->getReference('picture-2'));
+        $manager->persist($johnbookmark);
+        $manager->flush();
 
-
-        $picture->setFlickrId();
-        $picture->setFlickrSecret();
-        $picture->setFlickrFarmid();
-        $picture->setFlickrServid();
-        $i = 1;
-
-/*        while ($i <= 100) {
-            $post = new Post();
-            $post->setTitle('Titre du post n°'.$i);
-            $post->setBody('Corps du post');
-            $post->setIsPublished($i%2);
-            $manager->persist($post);
-
-            $i++;
-        }
-
-        $manager->flush();*/
+        $moiseBookmark = new Bookmark();
+        $moiseBookmark->setTitle('pretty');
+        $moiseBookmark->setUser($this->getReference('moise-user'));
+        $moiseBookmark->setIsActive(1);
+        $moiseBookmark->addPicture($this->getReference('picture-25'));
+        $moiseBookmark->addPicture($this->getReference('picture-18'));
+        $manager->persist($moiseBookmark);
+        $manager->flush();
     }
 
     public function getOrder()

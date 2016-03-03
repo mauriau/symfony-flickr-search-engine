@@ -19,8 +19,7 @@ class FlickrController extends Controller
     }
 
     /**
-     * @param type $tag
-     * @Route("/search/{tag}")
+     * @Route("/search/{tag}", defaults={"tag" = null})
      */
     public function searchAction($tag)
     {
@@ -31,8 +30,8 @@ class FlickrController extends Controller
 //            'title' => 'Search my boobs'
 //        ];
         return $this->render('FlickrBundle:Flickr:search.html.twig', array(
-                    'results' => $result,
-                    'title' => 'Search my boobs',
+            'results' => $result,
+            'title' => 'Search my boobs',
         ));
     }
 
