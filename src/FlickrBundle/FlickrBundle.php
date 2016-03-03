@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle;
+namespace FlickrBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class AppBundle extends Bundle
+class FlickrBundle extends Bundle
 {
 }

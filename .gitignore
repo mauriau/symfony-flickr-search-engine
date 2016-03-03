@@ -13,3 +13,4 @@ bower.json
 /bin/
 /composer.phar
 .idea/*
+/nbproject/
