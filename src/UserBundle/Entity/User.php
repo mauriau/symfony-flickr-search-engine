@@ -74,4 +74,14 @@ class User extends BaseUser
     {
         return $this->bookmarks;
     }
+
+    public function getExpiresAt(){
+        return $this->expiresAt;
+    }
+
+    public function getCredentialsExpireAt()
+    {
+        return $this->credentialsExpireAt;
+    }
+
 }
