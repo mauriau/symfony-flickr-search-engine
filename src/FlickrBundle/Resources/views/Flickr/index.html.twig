@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+{% block title %}
+    {{title}}
+{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('bundles/flickr/css/style.css') }}" rel="stylesheet">
+{% endblock %}
+{% block container %}
+    <div id="w">
+        <section id="sform">
+            <small>Note: No spaces or punctuation allowed. Searches are limited to one(1) keyword.</small>
+            <input type="text" id="s" name="s" class="sfield" placeholder="Enter a search tag..." autocomplete="off">
+        </section>
+        <section id="photos">
+        </section>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/flickr/js/ajax.js') }}"></script>
+{% endblock %}
