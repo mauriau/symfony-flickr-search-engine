@@ -1,0 +1,11 @@
+<div id="w">
+    <section id="sform">
+        <small>Note: No spaces or punctuation allowed. Searches are limited to one(1) keyword.</small>
+        <input type="text" id="s" name="s" class="sfield" placeholder="Enter a search tag..." autocomplete="off">
+    </section>
+    <section id="photos">
+        {% for res in results.photos.photo%}
+            <img src="http://farm{{res.farm}}static.flickr.com/{{res.server}}/{{res.id}}_{{res.secret}}.jpg">
+        {%endfor%}
+    </section>
+</div>
