@@ -19,19 +19,19 @@ class Picture
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="idInsta", type="integer")
+     * @ORM\Column(name="idFlickr", type="integer")
      */
-    private $idInsta;
+    protected $idFlickr;
 
     /*
      *@ORM\ManyToMany(targetEntity="AppBundle\Entity\Bookmark", cascade={"persist"})
      */
-    private $bookmark;
+    protected $bookmark;
 
 
     /**
@@ -45,25 +45,25 @@ class Picture
     }
 
     /**
-     * Set idInsta
+     * Set idFlickr
      *
-     * @param integer $idInsta
+     * @param integer $idFlickr
      * @return Picture
      */
-    public function setIdInsta($idInsta)
+    public function setIdFlickr($idFlickr)
     {
-        $this->idInsta = $idInsta;
+        $this->idFlickr = $idFlickr;
 
         return $this;
     }
 
     /**
-     * Get idInsta
+     * Get idFlickr
      *
      * @return integer 
      */
-    public function getIdInsta()
+    public function getIdFlickr()
     {
-        return $this->idInsta;
+        return $this->idFlickr;
     }
 }
