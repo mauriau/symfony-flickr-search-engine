@@ -4,16 +4,26 @@ namespace AppBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use UserBundle\Entity\User;
 
-class LoadUserFixture extends AbstractFixture implements OrderedFixtureInterface
+class LoadUserFixture extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
+
     function load(ObjectManager $manager)
     {
+        $passwordEncoder = $this->container->get('security.password_encoder');
+
         $admin = new User();
         $admin->setUsername('john');
         $admin->setEmail('admin@example.com');
-        $admin->setPassword('secret');
+        $encodedPassword = $passwordEncoder->encodePassword($admin, 'secret');
+        $admin->setPassword($encodedPassword);
         $admin->setRoles(array('ROLE_ADMIN'));
         $this->addReference('anna-user', $admin);
         $manager->persist($admin);
@@ -24,7 +34,8 @@ class LoadUserFixture extends AbstractFixture implements OrderedFixtureInterface
         $moiseAdmin->setUsername('moise');
         $moiseAdmin->setEmail('anna_admin@symfony.com');
         $moiseAdmin->setRoles(array('ROLE_USER'));
-        $moiseAdmin->setPassword('030784');
+        $encodedPassword = $passwordEncoder->encodePassword($admin, '030784');
+        $moiseAdmin->setPassword($encodedPassword);
         $manager->persist($moiseAdmin);
         $manager->flush();
         $this->addReference('moise-user', $moiseAdmin);
@@ -33,5 +44,10 @@ class LoadUserFixture extends AbstractFixture implements OrderedFixtureInterface
     public function getOrder()
     {
         return 1;
+    }
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
     }
 }

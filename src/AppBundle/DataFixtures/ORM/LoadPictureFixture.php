@@ -18,6 +18,7 @@ class LoadPictureFixture extends AbstractFixture implements OrderedFixtureInterf
     function load(ObjectManager $manager)
     {
         $flkrService = $this->container->get('flickr.search');
+        $flkrService->setPerPage(20);
         $result = $flkrService->search('voyage');
         $photos = $result['photos']['photo'];
         $nbtotPhoto = count($photos);
