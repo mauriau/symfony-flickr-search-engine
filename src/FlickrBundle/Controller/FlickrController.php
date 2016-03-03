@@ -25,7 +25,7 @@ class FlickrController extends Controller
     /**
      * @Template()
      * @param type $tag
-     * @Route("/search/{tag}")
+     * @Route("/search/{tag}",  name="flickr_search", options={"expose"=true})
      */
     public function searchAction($tag)
     {

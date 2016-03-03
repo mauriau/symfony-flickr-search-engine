@@ -7,10 +7,11 @@ $(document).ready(function () {
         $(sfield).addClass("loading");
         $(container).empty();
         var q = $(sfield).val();
+        var url = Routing.generate('flickr_search', { tag: q });
 
         $.ajax({
             type: 'GET',
-            url: '/flickr/search/' + q,
+            url: url,
             dataType: 'json',
             success: function (data) {
                 $(sfield).removeClass("loading");
