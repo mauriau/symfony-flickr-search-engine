@@ -1,8 +1,3 @@
-flickr:
-    resource: "@FlickrBundle/Controller/"
-    type:     annotation
-    prefix:   /flickr
-
 user:
     resource: "@UserBundle/Controller/"
     type:     annotation
@@ -19,3 +14,4 @@ easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/"
     type:     annotation
     prefix:   /admin
+

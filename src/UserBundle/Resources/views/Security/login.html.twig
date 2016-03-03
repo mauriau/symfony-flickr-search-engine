@@ -18,13 +18,13 @@
                     <div class="input-field col s12">
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                         <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-                        <label for="username"></label>
+                        <label for="username">{{ 'security.login.username'|trans }}</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input type="password" id="password" name="_password" required="required" />
-                        <label for="password"></label>
+                        <label for="password">{{ 'security.login.password'|trans }}</label>
                     </div>
                 </div>
                 <div class="row">

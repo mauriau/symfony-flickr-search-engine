@@ -27,7 +27,7 @@ class DefaultController extends Controller
      */
     public function myWallAction()
     {
-
+        return $this->render('AppBundle:Content:galleryperso.html.twig', array('id' => $id));
     }
 
 

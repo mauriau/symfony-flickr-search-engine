@@ -1,4 +1,0 @@
-services:
-    flickr.search:
-        class: FlickrBundle\Services\Flickr
-        arguments: []
