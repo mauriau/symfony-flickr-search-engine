@@ -31,6 +31,7 @@ class Flickr
         $args['format'] = $this->format;
         $args['per_page'] = $this->per_page;
         $args['text'] = urldecode($query);
+        $args['min_upload_date'] = new \DateTime('now');
         $args['method'] = empty($query)?'flickr.photos.getRecent':'flickr.photos.search';
 
         $url = 'http://flickr.com/services/rest/?';
