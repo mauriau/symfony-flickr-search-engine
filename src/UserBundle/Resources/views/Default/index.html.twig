@@ -1,1 +1,13 @@
-Hello World!
+{% extends "base.html.twig" %}
+
+{% block navtop %}
+    {% include "AppBundle:Nav:navtop.html.twig" %}
+{% endblock %}
+{% block titlepage %}
+    {% include "AppBundle:Title:title.html.twig" %}
+{% endblock %}
+{% block container %}
+    {% include "AppBundle:Content:gallery.html.twig" %}
+{% endblock %}
+
+

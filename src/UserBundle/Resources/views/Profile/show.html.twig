@@ -3,11 +3,11 @@
 {% block navtop %}
     {% include "AppBundle:Nav:navtop.html.twig" %}
 {% endblock %}
+
 {% block titlepage %}
-    {% include "AppBundle:Title:title.html.twig" %}
+    {% include "UserBundle:Title:title.html.twig" %}
 {% endblock %}
+
 {% block container %}
-    {% include "AppBundle:Content:gallery.html.twig" %}
+{% include "UserBundle:Profile:show_content.html.twig" %}
 {% endblock %}
-
-

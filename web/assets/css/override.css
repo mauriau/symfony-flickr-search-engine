@@ -1,0 +1,36 @@
+nav#navtop{
+    position: fixed;
+    z-index: 1000;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+/*connexion*/
+body{
+    background: #fafafa;
+}
+.connexionFormContainer{
+    padding: 4%;
+    background: #fff;
+    margin-top: 15%;
+}
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #1565c0;
+    box-shadow: 0 1px 0 0 #1565c0;
+}
+
+#connexionForm button{
+    width: 100%;
+}
+
+
+/*inscription*/
+.registerFormContainer{
+    padding: 5%;
+    background: #fff;
+    margin-top: 15%;
+}
+#registerForm button{
+    width: 100%;
+}
