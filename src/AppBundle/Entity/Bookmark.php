@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Picture;
+use UserBundle\Entity\User;
 
 /**
  * Bookmark
@@ -38,15 +39,28 @@ class Bookmark
     protected $isActive;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="bookmarks")
-     * @ORM\JoinColumn(name="user_id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="bookmarks",cascade={"remove"})
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     protected $User;
 
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Picture", cascade={"persist"})
      */
-    protected $Picture;
+    protected $pictures;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="create_at", type="datetime")
+     */
+    private $created_at;
+
+    public function __construct()
+    {
+        $this->created_at = new \Datetime('now');
+        $this->pictures = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -105,13 +119,6 @@ class Bookmark
     {
         return $this->isActive;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->Picture = new ArrayCollection();
-    }
 
     /**
      * Add Picture
@@ -152,7 +159,7 @@ class Bookmark
      * @param \UserBundle\Entity\User $user
      * @return Bookmark
      */
-    public function setUser(\UserBundle\Entity\User $user)
+    public function setUser(User $user)
     {
         $this->User = $user;
 
@@ -162,10 +169,43 @@ class Bookmark
     /**
      * Get User
      *
-     * @return \UserBundle\Entity\User 
+     * @return \UserBundle\Entity\User
      */
     public function getUser()
     {
         return $this->User;
+    }
+
+    /**
+     * Set created_at
+     *
+     * @param \DateTime $createdAt
+     * @return Bookmark
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->created_at = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get created_at
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Get pictures
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
     }
 }

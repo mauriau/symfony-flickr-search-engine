@@ -24,11 +24,12 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Bookmark", mappedBy="user",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Bookmark", mappedBy="User",cascade={"persist"})
      */
     protected $bookmarks;
     public function __construct()
     {
+        parent::__construct();
         $this->bookmarks = new ArrayCollection();
     }
     /**
