@@ -11,28 +11,29 @@ class FlickrController extends Controller
 {
 
     /**
+     * @Template()
      * @Route("/")
      */
     public function indexAction()
     {
-        return $this->render('FlickrBundle:Flickr:index.html.twig');
+        return [
+            'title' => 'Recherche Flickr'
+        ];
     }
 
     /**
-     * @Route("/search/{tag}", defaults={"tag" = null})
+     * @Template()
+     * @param type $tag
+     * @Route("/search/{tag}")
      */
     public function searchAction($tag)
     {
-        $instgramSearvices = $this->get('flickr.search');
-        $result = $instgramSearvices->search($tag);
-//        return [
-//          'result' => $result,
-//            'title' => 'Search my boobs'
-//        ];
-        return $this->render('FlickrBundle:Flickr:search.html.twig', array(
+        $FlickrServices = $this->get('flickr.search');
+        $result = $FlickrServices->search($tag);
+        return [
             'results' => $result,
-            'title' => 'Search my boobs',
-        ));
+            'title' => 'Search my boobs'
+        ];
     }
 
 }
