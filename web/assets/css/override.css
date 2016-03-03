@@ -34,3 +34,9 @@ body{
 #registerForm button{
     width: 100%;
 }
+
+#cardPicture .card-reveal{
+padding: 0px !important;
+}
+#cardPicture .collection{
+margin: 0px !important;}

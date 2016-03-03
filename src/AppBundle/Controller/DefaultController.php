@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use AppBundle\Entity\Bookmark;
 
 class DefaultController extends Controller
 {
@@ -22,11 +23,11 @@ class DefaultController extends Controller
 
     /**
      * @Route("/mywall", name="mywall")
-     * @Template("AppBundle:Content:galleryperso.html.twig")
+     *
      */
-    public function murpersoAction(Request $request)
+    public function murpersoAction($id)
     {
-
+        return $this->render('AppBundle:Content:galleryperso.html.twig', array('id' => $id));
     }
 
 

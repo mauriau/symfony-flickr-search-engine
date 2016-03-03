@@ -2,39 +2,72 @@
 
     <div class="col l3 m6 s12">
 
-        <div class="card">
+        <div id="cardPicture" class="card">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="images/office.jpg">
+                    <img class="activator" src="http://91.68.209.8/bmi/materializecss.com/images/yuna.jpg">
             </div>
             <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+
+                <span class="card-title activator grey-text text-darken-4">Card Title
+                </span>
+
+
+                <a class="modal-trigger" href="#modal1">
+                    <i class="material-icons right" alt="Favoris" style="color:#ffd740">star_rate</i>
+                </a>
+
+
                 <p><a href="#">This is a link</a></p>
+
             </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            <div  class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                information
             </div>
         </div>
-
     </div>
 
-    <div class="col l3 m6 s12">
+    {# modal #}
+    <div id="modal1" class="modal bottom-sheet">
+        <div class="modal-content">
+            <h4>Mes favoris</h4>
 
-        <div class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="images/office.jpg">
-            </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                <p><a href="#">This is a link</a></p>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
-            </div>
+            {#body#}
+
+            <ul class="collection">
+                <input type="text" name="favoris" id="AddFavoris"/>
+
+                <li class="collection-item avatar">
+                    <img src="http://91.68.209.8/bmi/materializecss.com/images/yuna.jpg" alt="" class="circle">
+                    <span class="title">Title</span>
+                    <p>First Line <br> Second Line </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">playlist_add</i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle">folder</i>
+                    <span class="title">Title</span>
+                    <p>First Line <br> Second Line </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">playlist_add</i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle green">assessment</i>
+                    <span class="title">Title</span>
+                    <p>First Line <br> Second Line </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">playlist_add</i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle red">play_arrow</i>
+                    <span class="title">Title</span>
+                    <p>First Line <br> Second Line </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">playlist_add</i></a>
+                </li>
+            </ul>
+
+
         </div>
+  {#      <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>#}
 
-    </div>
-
+        </div>
 </div>
-
