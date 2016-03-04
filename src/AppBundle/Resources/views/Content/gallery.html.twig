@@ -1,20 +1,21 @@
 <div class="row">
+    {#{{ dump(images) }}#}
     {% for image in images.photos.photo %}
 
     <div class="col l3 m6 s12">
 
         <div id="cardPicture" class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="https://farm{{ image.farm }}.staticflickr.com/{{ image.server }}/{{ image.id }}_{{ image.secret }}.jpg">
+            <div id="FlickrSearch" class="card-image waves-effect waves-block waves-light">
+                <img class="activator" height="300" src="https://farm{{ image.farm }}.staticflickr.com/{{ image.server }}/{{ image.id }}_{{ image.secret }}.jpg"/>
             </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">{{ image.title }}
+            <div class="card-content" style="height: 150px;">
+                <span class="card-title activator grey-text text-darken-4" style="word-wrap: break-word;font-size: 20px;">{% if image.title is empty %}Photo sans titre{% else %}{{ image.title | truncate(20, false, '...') }}{% endif %}
                 </span>
 
                 <a class="modal-trigger" href="#modal1">
-                    <i class="material-icons right" alt="Favoris" style="color:#ffd740">star_rate</i>
+                    <i class="small material-icons right" alt="Favoris" style="color:#ffd740">star_rate</i>
                 </a>
-                <p><a href="#">This is a link</a></p>
+                {#<p><a href="#">This is a link</a></p>#}
 
             </div>
 
@@ -31,10 +32,10 @@
         <div class="modal-content">
             <h4>Mes favoris</h4>
 
-            {#body#}
+            <input type="text" name="favoris" placeholder="Entrez un nouveau nom de favori" id="AddFavoris"/>
+            <a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Créer un favori</a>
 
             <ul class="collection">
-                <input type="text" name="favoris" id="AddFavoris"/>
 
                 <li class="collection-item avatar">
                     <img src="http://91.68.209.8/bmi/materializecss.com/images/yuna.jpg" alt="" class="circle">

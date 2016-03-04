@@ -9,5 +9,7 @@
 {% block container %}
     {% include "AppBundle:Content:gallery.html.twig" %}
 {% endblock %}
-
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/app/js/ajax.js') }}"></script>
+{% endblock %}
 

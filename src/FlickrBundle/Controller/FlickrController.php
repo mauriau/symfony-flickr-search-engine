@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
 
 class FlickrController extends Controller
 {
@@ -24,12 +25,19 @@ class FlickrController extends Controller
     /**
      * @Template()
      * @param type $tag
-     * @Route("/search/{tag}")
+     * @Route("/search/{tag}",  name="flickr_search", options={"expose"=true})
      */
     public function searchAction($tag)
     {
         $FlickrServices = $this->get('flickr.search');
-        $result = $FlickrServices->search($tag);
+        $request = $this->getRequest();
+        $result = $FlickrServices->searchByTag($tag);
+
+        if ($request->isXmlHttpRequest()) {
+            $response = new Response();
+            $response->setContent(json_encode($result));
+            return $response;
+        }
         return [
             'results' => $result,
             'title' => 'Search my boobs'

@@ -77,3 +77,18 @@ easy_admin:
         - UserBundle\Entity\User
         - AppBundle\Entity\Bookmark
         - AppBundle\Entity\Picture
+
+services:
+    twig.extension.text:
+       class: Twig_Extensions_Extension_Text
+       tags:
+            - { name: twig.extension }
+
+fos_js_routing:
+    cache_control:
+        # All are optional, defaults shown
+        public: false   # can be true (public) or false (private)
+        maxage: null    # integer value, e.g. 300
+        smaxage: null   # integer value, e.g. 300
+        expires: null   # anything that can be fed to "new \DateTime($expires)", e.g. "5 minutes"
+        vary: []        # string or array, e.g. "Cookie" or [ Cookie, Accept ]            
