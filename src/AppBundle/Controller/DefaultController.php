@@ -14,7 +14,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/gallery", name="gallery")
-     * @Template("AppBundle:Default:index.html.twig")
+     * @Template()
      */
     public function indexAction()
     {
@@ -37,13 +37,13 @@ class DefaultController extends Controller
      */
     public function myWallAction()
     {
-        return $this->render('AppBundle:Content:galleryperso.html.twig', array('id' => 1));
+        return array('id' => 1);
     }
 
     public function createFavoris()
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        if (is_a($user, 'User')) {
+        if (is_a($user, 'UserBundle\Entity\User')) {
             $test = $this->get('doctrine.orm.entity_manager')->getRepository('AppBundle:Bookmark');
             $result = $test->findAllBookmarkForUser($user);
             return 'done';
