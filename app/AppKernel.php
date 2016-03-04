@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new \JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new FlickrBundle\FlickrBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new MailerBundle\MailerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

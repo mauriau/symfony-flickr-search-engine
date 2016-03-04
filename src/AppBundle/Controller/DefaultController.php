@@ -14,12 +14,15 @@ class DefaultController extends Controller
 
     /**
      * @Route("/gallery", name="gallery")
-     * @Template()
+     * @Template("AppBundle:Default:index.html.twig")
      */
     public function indexAction()
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
         if (is_a($user, 'UserBundle\Entity\User')) {
+
+            $ret = $this->get('mailer.send');
+            $ret->sendContactMessage($user);
             $flickService = $this->get('flickr.search');
             $result = $flickService->search();
             return ['images' => $result];
@@ -34,16 +37,19 @@ class DefaultController extends Controller
      */
     public function myWallAction()
     {
-        return array('id' => 1);
+        return $this->render('AppBundle:Content:galleryperso.html.twig', array('id' => 1));
     }
 
     public function createFavoris()
     {
-        $user = $this->getDoctrine()
-                ->getRepository('UserBundle:User')
-                ->find(44);
-        $test = $this->get('doctrine.orm.entity_manager')->getRepository('AppBundle:Bookmark');
-        $result = $test->findAllBookmarkForUser($user);
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if (is_a($user, 'User')) {
+            $test = $this->get('doctrine.orm.entity_manager')->getRepository('AppBundle:Bookmark');
+            $result = $test->findAllBookmarkForUser($user);
+            return 'done';
+        } else {
+            throw $this->createAccessDeniedException('You can\'t acces this part without being login');
+        }
     }
 
     public function showFavoris($id)
@@ -57,5 +63,4 @@ class DefaultController extends Controller
         $test = $this->get('doctrine.orm.entity_manager')->getRepository('AppBundle:Bookmark');
         $result = $test->findAllBookmarkForUser($user);
     }
-
 }

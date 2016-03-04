@@ -1,3 +1,8 @@
+mailer:
+    resource: "@MailerBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 flickr:
     resource: "@FlickrBundle/Controller/"
     type:     annotation
