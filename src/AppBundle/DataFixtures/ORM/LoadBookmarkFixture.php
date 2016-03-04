@@ -14,18 +14,21 @@ class LoadBookmarkFixture extends AbstractFixture implements OrderedFixtureInter
         $johnbookmark = new Bookmark();
         $johnbookmark->setTitle('BITCHES');
         $johnbookmark->setUser($this->getReference('admin-user'));
-        $johnbookmark->setIsActive(1);
+        $johnbookmark->setIsActive(true);
         $johnbookmark->addPicture($this->getReference('picture-1'));
         $johnbookmark->addPicture($this->getReference('picture-2'));
+        $johnbookmark->addPicture($this->getReference('picture-3'));
+
         $manager->persist($johnbookmark);
         $manager->flush();
 
         $moiseBookmark = new Bookmark();
         $moiseBookmark->setTitle('pretty');
         $moiseBookmark->setUser($this->getReference('moise-user'));
-        $moiseBookmark->setIsActive(1);
+        $moiseBookmark->setIsActive(true);
         $moiseBookmark->addPicture($this->getReference('picture-25'));
         $moiseBookmark->addPicture($this->getReference('picture-18'));
+
         $manager->persist($moiseBookmark);
         $manager->flush();
     }

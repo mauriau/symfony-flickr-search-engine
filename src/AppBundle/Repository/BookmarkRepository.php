@@ -3,6 +3,7 @@
 namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use FOS\UserBundle\Model\User;
 
 /**
  * BookmarkRepository
@@ -12,4 +13,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class BookmarkRepository extends EntityRepository
 {
+    public function findAllBookmarkForUser(User $user)
+    {
+        return $this->createQueryBuilder('b')
+            ->select('b')
+            ->where('b.User = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
 }

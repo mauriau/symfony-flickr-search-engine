@@ -26,15 +26,14 @@ class LoadUserFixture extends AbstractFixture implements OrderedFixtureInterface
         $admin->setPassword($encodedPassword);
         $admin->setEnabled(true);
         $admin->setRoles(array('ROLE_ADMIN'));
-        $this->addReference('anna-user', $admin);
+        $this->addReference('admin-user', $admin);
         $manager->persist($admin);
         $manager->flush();
-        $this->addReference('admin-user', $admin);
 
         $moiseAdmin = new User();
         $moiseAdmin->setUsername('moise');
         $moiseAdmin->setEmail('anna_admin@symfony.com');
-        $admin->setEnabled(true);
+        $moiseAdmin->setEnabled(true);
         $moiseAdmin->setRoles(array('ROLE_USER'));
         $encodedPassword = $passwordEncoder->encodePassword($admin, '030784');
         $moiseAdmin->setPassword($encodedPassword);

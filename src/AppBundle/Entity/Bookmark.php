@@ -121,39 +121,6 @@ class Bookmark
     }
 
     /**
-     * Add Picture
-     *
-     * @param \AppBundle\Entity\Picture $picture
-     * @return Bookmark
-     */
-    public function addPicture(Picture $picture)
-    {
-        $this->Picture[] = $picture;
-
-        return $this;
-    }
-
-    /**
-     * Remove Picture
-     *
-     * @param \AppBundle\Entity\Picture $picture
-     */
-    public function removePicture(Picture $picture)
-    {
-        $this->Picture->removeElement($picture);
-    }
-
-    /**
-     * Get Picture
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPicture()
-    {
-        return $this->Picture;
-    }
-
-    /**
      * Set User
      *
      * @param \UserBundle\Entity\User $user
@@ -192,11 +159,34 @@ class Bookmark
     /**
      * Get created_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
         return $this->created_at;
+    }
+
+    /**
+     * Add pictures
+     *
+     * @param \AppBundle\Entity\Picture $pictures
+     * @return Bookmark
+     */
+    public function addPicture(Picture $pictures)
+    {
+        $this->pictures[] = $pictures;
+
+        return $this;
+    }
+
+    /**
+     * Remove pictures
+     *
+     * @param \AppBundle\Entity\Picture $pictures
+     */
+    public function removePicture(Picture $pictures)
+    {
+        $this->pictures->removeElement($pictures);
     }
 
     /**
