@@ -11,14 +11,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {
+
     /**
      * @Route("/gallery", name="gallery")
-     * @Template("AppBundle:Default:index.html.twig")
+     * @Template()
      */
     public function indexAction()
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        if (is_a($user,'User')) {
+        if (is_a($user, 'UserBundle\Entity\User')) {
             $flickService = $this->get('flickr.search');
             $result = $flickService->search();
             return ['images' => $result];
@@ -33,17 +34,16 @@ class DefaultController extends Controller
      */
     public function myWallAction()
     {
-        return $this->render('AppBundle:Content:galleryperso.html.twig', array('id' => 1));
+        return array('id' => 1);
     }
 
     public function createFavoris()
     {
         $user = $this->getDoctrine()
-            ->getRepository('UserBundle:User')
-            ->find(44);
+                ->getRepository('UserBundle:User')
+                ->find(44);
         $test = $this->get('doctrine.orm.entity_manager')->getRepository('AppBundle:Bookmark');
         $result = $test->findAllBookmarkForUser($user);
-        var_dump($result);
     }
 
     public function showFavoris($id)
@@ -51,12 +51,11 @@ class DefaultController extends Controller
         $session = $this->get('session');
         $session->start();
         $user_id = $session->getId();
-        var_dump($user_id);
         $user = $this->getDoctrine()
-            ->getRepository('UserBundle:User')
-            ->find(44);
+                ->getRepository('UserBundle:User')
+                ->find(44);
         $test = $this->get('doctrine.orm.entity_manager')->getRepository('AppBundle:Bookmark');
         $result = $test->findAllBookmarkForUser($user);
-        var_dump($result);
     }
+
 }
