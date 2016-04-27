@@ -1,0 +1,1 @@
+fos.Router.setData({"base_url":"","routes":{"flickr_search":{"tokens":[["variable","\/","[^\/]++","tag"],["text","\/flickr\/search"]],"defaults":[],"requirements":[],"hosttokens":[]}},"prefix":"","host":"localhost","scheme":"http"});
